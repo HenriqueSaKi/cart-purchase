@@ -1,0 +1,165 @@
+openapi: 3.0.3
+info:
+  title: Cart Purchase Microservice
+  description: Cart purchase microservice
+  contact:
+    email: satoshikisaki@hotmail.com
+  version: 1.0.0
+tags:
+  - name: cart
+paths:
+  /cart/add_to_cart:
+    post:
+      tags:
+        - cart
+      summary: Add items to cart
+      description: Add items to cart
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AddItem'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+        '405':
+          description: Invalid input
+  /cart/list_cart_items:
+    get:
+      tags:
+        - cart
+      summary: Returns a list of items added to the cart
+      description: Returns a list of items added to the cart
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Item'
+  /cart/remove_item/{cart_item_id}:
+    delete:
+      tags:
+        - cart
+      summary: Remove item
+      description: Remove item
+      parameters:
+        - name: cart_item_id
+          in: path
+          description: ID of item in the cart
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+                format: int64
+                example: "Item 1 - Water bottle removed successfully!"
+  /cart/place_order:
+    post:
+      tags:
+        - cart
+      summary: Place order
+      description: Place order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '#/components/schemas/Item'
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Thank you for your order! We will send you an order confirmation to example@email.com shortly."
+        '405':
+          description: Invalid input
+components:
+  schemas:
+    AddItem:
+      type: object
+      properties:
+        productTitle:
+          type: string
+          example: "Water Bottle 1L"
+        description:
+          type: string
+          example: "The portable water can be used in various occasions. The gym, camping, traveling, as well as in the office and at home."
+        brandName:
+          type: string
+          example: "Xiaomi"
+        material:
+          type: string
+          example: "Plastic"
+        color:
+          type: string
+          example: "Red"
+        quantity:
+          type: integer
+          example: 1
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        price:
+          type: number
+          example: 9.99
+    Item:
+      type: object
+      properties:
+        id:
+          type: integer
+          example: 1
+        productTitle:
+          type: string
+          example: "Water Bottle 1L"
+        description:
+          type: string
+          example: "The portable water can be used in various occasions. The gym, camping, traveling, as well as in the office and at home."
+        brandName:
+          type: string
+          example: "Xiaomi"
+        material:
+          type: string
+          example: "Plastic"
+        color:
+          type: string
+          example: "Red"
+        quantity:
+          type: integer
+          example: 1
+        dimensions:
+          $ref: '#/components/schemas/Dimensions'
+        price:
+          type: number
+          example: 9.99
+    Dimensions:
+      type: object
+      properties:
+        length:
+          type: number
+          example: 10.91
+        width:
+          type: number
+          example: 3.11
+        height:
+          type: number
+          example: 3.03
+        unitOfMeasurement:
+          type: string
+          example: "inches"
