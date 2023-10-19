@@ -22,49 +22,40 @@ import java.util.Objects;
  * Item
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-10-17T21:51:11.721328500-03:00[America/Sao_Paulo]")public class Item {
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-10-17T21:51:11.721328500-03:00[America/Sao_Paulo]")
+public class Item {
 
   @JsonProperty("id")
-
   private Integer id = null;
 
   @JsonProperty("productTitle")
-
   private String productTitle = null;
 
   @JsonProperty("description")
-
   private String description = null;
 
   @JsonProperty("brandName")
-
   private String brandName = null;
 
   @JsonProperty("material")
-
   private String material = null;
 
   @JsonProperty("color")
-
   private String color = null;
 
   @JsonProperty("quantity")
-
   private Integer quantity = null;
 
   @JsonProperty("dimensions")
-
   private Dimensions dimensions = null;
 
   @JsonProperty("price")
-
   private BigDecimal price = null;
+
   public Item id(Integer id) {
     this.id = id;
     return this;
   }
-
-  
 
   /**
   * Get id
@@ -74,15 +65,15 @@ import java.util.Objects;
   public Integer getId() {
     return id;
   }
+
   public void setId(Integer id) {
     this.id = id;
   }
+
   public Item productTitle(String productTitle) {
     this.productTitle = productTitle;
     return this;
   }
-
-  
 
   /**
   * Get productTitle
@@ -92,15 +83,15 @@ import java.util.Objects;
   public String getProductTitle() {
     return productTitle;
   }
+
   public void setProductTitle(String productTitle) {
     this.productTitle = productTitle;
   }
+
   public Item description(String description) {
     this.description = description;
     return this;
   }
-
-  
 
   /**
   * Get description
@@ -110,15 +101,15 @@ import java.util.Objects;
   public String getDescription() {
     return description;
   }
+
   public void setDescription(String description) {
     this.description = description;
   }
+
   public Item brandName(String brandName) {
     this.brandName = brandName;
     return this;
   }
-
-  
 
   /**
   * Get brandName
@@ -128,15 +119,15 @@ import java.util.Objects;
   public String getBrandName() {
     return brandName;
   }
+
   public void setBrandName(String brandName) {
     this.brandName = brandName;
   }
+
   public Item material(String material) {
     this.material = material;
     return this;
   }
-
-  
 
   /**
   * Get material
@@ -146,15 +137,15 @@ import java.util.Objects;
   public String getMaterial() {
     return material;
   }
+
   public void setMaterial(String material) {
     this.material = material;
   }
+
   public Item color(String color) {
     this.color = color;
     return this;
   }
-
-  
 
   /**
   * Get color
@@ -164,15 +155,15 @@ import java.util.Objects;
   public String getColor() {
     return color;
   }
+
   public void setColor(String color) {
     this.color = color;
   }
+
   public Item quantity(Integer quantity) {
     this.quantity = quantity;
     return this;
   }
-
-  
 
   /**
   * Get quantity
@@ -182,15 +173,15 @@ import java.util.Objects;
   public Integer getQuantity() {
     return quantity;
   }
+
   public void setQuantity(Integer quantity) {
     this.quantity = quantity;
   }
+
   public Item dimensions(Dimensions dimensions) {
     this.dimensions = dimensions;
     return this;
   }
-
-  
 
   /**
   * Get dimensions
@@ -200,15 +191,15 @@ import java.util.Objects;
   public Dimensions getDimensions() {
     return dimensions;
   }
+
   public void setDimensions(Dimensions dimensions) {
     this.dimensions = dimensions;
   }
+
   public Item price(BigDecimal price) {
     this.price = price;
     return this;
   }
-
-  
 
   /**
   * Get price
@@ -218,9 +209,11 @@ import java.util.Objects;
   public BigDecimal getPrice() {
     return price;
   }
+
   public void setPrice(BigDecimal price) {
     this.price = price;
   }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

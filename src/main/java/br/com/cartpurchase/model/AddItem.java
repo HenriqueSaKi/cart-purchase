@@ -26,42 +26,33 @@ import java.util.Objects;
 public class AddItem {
 
     @JsonProperty("productTitle")
-
     private String productTitle = null;
 
     @JsonProperty("description")
-
     private String description = null;
 
     @JsonProperty("brandName")
-
     private String brandName = null;
 
     @JsonProperty("material")
-
     private String material = null;
 
     @JsonProperty("color")
-
     private String color = null;
 
     @JsonProperty("quantity")
-
     private Integer quantity = null;
 
     @JsonProperty("dimensions")
-
     private Dimensions dimensions = null;
 
     @JsonProperty("price")
-
     private BigDecimal price = null;
 
     public AddItem productTitle(String productTitle) {
         this.productTitle = productTitle;
         return this;
     }
-
 
     /**
      * Get productTitle
@@ -82,7 +73,6 @@ public class AddItem {
         return this;
     }
 
-
     /**
      * Get description
      *
@@ -101,7 +91,6 @@ public class AddItem {
         this.brandName = brandName;
         return this;
     }
-
 
     /**
      * Get brandName
@@ -122,7 +111,6 @@ public class AddItem {
         return this;
     }
 
-
     /**
      * Get material
      *
@@ -141,7 +129,6 @@ public class AddItem {
         this.color = color;
         return this;
     }
-
 
     /**
      * Get color
@@ -162,7 +149,6 @@ public class AddItem {
         return this;
     }
 
-
     /**
      * Get quantity
      *
@@ -182,7 +168,6 @@ public class AddItem {
         return this;
     }
 
-
     /**
      * Get dimensions
      *
@@ -201,7 +186,6 @@ public class AddItem {
         this.price = price;
         return this;
     }
-
 
     /**
      * Get price

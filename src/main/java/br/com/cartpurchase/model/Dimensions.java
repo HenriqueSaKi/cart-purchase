@@ -14,6 +14,7 @@ package br.com.cartpurchase.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Data;
 
 import java.math.BigDecimal;
 import java.util.Objects;
@@ -22,29 +23,25 @@ import java.util.Objects;
  * Dimensions
  */
 
-@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-10-17T21:51:11.721328500-03:00[America/Sao_Paulo]")public class Dimensions {
+@Data
+@javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.JavaClientCodegen", date = "2023-10-17T21:51:11.721328500-03:00[America/Sao_Paulo]")
+public class Dimensions {
 
   @JsonProperty("length")
-
   private BigDecimal length = null;
 
   @JsonProperty("width")
-
   private BigDecimal width = null;
 
   @JsonProperty("height")
-
   private BigDecimal height = null;
 
   @JsonProperty("unitOfMeasurement")
-
   private String unitOfMeasurement = null;
   public Dimensions length(BigDecimal length) {
     this.length = length;
     return this;
   }
-
-  
 
   /**
   * Get length
@@ -54,15 +51,15 @@ import java.util.Objects;
   public BigDecimal getLength() {
     return length;
   }
+
   public void setLength(BigDecimal length) {
     this.length = length;
   }
+
   public Dimensions width(BigDecimal width) {
     this.width = width;
     return this;
   }
-
-  
 
   /**
   * Get width
@@ -72,15 +69,15 @@ import java.util.Objects;
   public BigDecimal getWidth() {
     return width;
   }
+
   public void setWidth(BigDecimal width) {
     this.width = width;
   }
+
   public Dimensions height(BigDecimal height) {
     this.height = height;
     return this;
   }
-
-  
 
   /**
   * Get height
@@ -90,15 +87,15 @@ import java.util.Objects;
   public BigDecimal getHeight() {
     return height;
   }
+
   public void setHeight(BigDecimal height) {
     this.height = height;
   }
+
   public Dimensions unitOfMeasurement(String unitOfMeasurement) {
     this.unitOfMeasurement = unitOfMeasurement;
     return this;
   }
-
-  
 
   /**
   * Get unitOfMeasurement
@@ -108,9 +105,11 @@ import java.util.Objects;
   public String getUnitOfMeasurement() {
     return unitOfMeasurement;
   }
+
   public void setUnitOfMeasurement(String unitOfMeasurement) {
     this.unitOfMeasurement = unitOfMeasurement;
   }
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {

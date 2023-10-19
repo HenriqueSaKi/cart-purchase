@@ -1,7 +1,12 @@
 package br.com.cartpurchase.controller;
 
 import br.com.cartpurchase.model.AddItem;
+import br.com.cartpurchase.model.Dimensions;
 import br.com.cartpurchase.model.Item;
+import br.com.cartpurchase.model.dto.ItemDTO;
+import br.com.cartpurchase.service.CartPurchaseServiceImpl;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,27 +18,50 @@ import java.util.List;
 @RequestMapping("api/v1")
 public class CartPurchaseController {
 
+    @Autowired
+    CartPurchaseServiceImpl service;
+
     @PostMapping("/cart/add_to_cart")
     public ResponseEntity<Item> addItemsToCart (@RequestBody AddItem addItem) {
-       return ResponseEntity.status(HttpStatus.OK).body(new Item());
+        ItemDTO itemDTO = new ItemDTO();
+        BeanUtils.copyProperties(addItem, itemDTO);
+        BeanUtils.copyProperties(addItem.getDimensions(), itemDTO);
+
+        Item item = service.saveInCart(itemDTO);
+
+        return ResponseEntity.status(HttpStatus.OK).body(item);
+
     }
 
     @GetMapping("/cart/list_cart_items")
     public ResponseEntity<List<Item>> listCartItems () {
-        return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<>());
+        List<Item> itemList = service.getCartItems();
+        return ResponseEntity.status(HttpStatus.OK).body(itemList);
     }
 
-    @DeleteMapping("/cart/remove_item/{cart_item_id}")
+    @DeleteMapping("/cart/remove_item/{cartItemId}")
     public ResponseEntity<String> removeItem (@PathVariable String cartItemId) {
-        String productTitle = "";
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Item " + cartItemId + " - " + productTitle +
-                        " was removed successfully!");
+        try {
+            String productTitle = service.findItemById(
+                            Integer.parseInt(cartItemId))
+                    .getProductTitle();
+
+            service.deleteById(cartItemId);
+
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Item " + cartItemId + " - " + productTitle +
+                            " was removed successfully!");
+        }
+        catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        }
+
     }
 
     @PostMapping("/cart/place_order")
-    public ResponseEntity<List<Item>> placeOrder () {
-        return ResponseEntity.status(HttpStatus.OK).body(new ArrayList<>());
+    public ResponseEntity<String> placeOrder (@RequestBody List<Item> itemList) {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body("Thank you for your order! We will send you an order confirmation to example@email.com shortly.");
     }
 
 }
