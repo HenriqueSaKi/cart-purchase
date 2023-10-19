@@ -28,8 +28,6 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
-        '405':
-          description: Invalid input
   /cart/list_cart_items:
     get:
       tags:
@@ -45,6 +43,13 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
+        '404':
+          description: empty cart
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Your cart is empty!"
   /cart/remove_item/{cart_item_id}:
     delete:
       tags:
@@ -68,19 +73,26 @@ paths:
                 type: string
                 format: int64
                 example: "Item 1 - Water bottle removed successfully!"
+        '400':
+          description: id not found
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Id: 3 not found."
+        '404':
+          description: empty cart
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Your cart is empty!"
   /cart/place_order:
-    post:
+    get:
       tags:
         - cart
       summary: Place order
       description: Place order
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: '#/components/schemas/Item'
       responses:
         '200':
           description: successful operation
@@ -89,8 +101,13 @@ paths:
               schema:
                 type: string
                 example: "Thank you for your order! We will send you an order confirmation to example@email.com shortly."
-        '405':
-          description: Invalid input
+        '404':
+          description: empty cart
+          content:
+            application/json:
+              schema:
+                type: string
+                example: "Your cart is empty!"
 components:
   schemas:
     AddItem:

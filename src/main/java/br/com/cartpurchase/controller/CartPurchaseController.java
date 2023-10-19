@@ -60,7 +60,7 @@ public class CartPurchaseController {
                                 " was removed successfully!");
             }
             catch (Exception e) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
             }
         }
         else {
