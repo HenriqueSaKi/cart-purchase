@@ -60,7 +60,7 @@ public class CartPurchaseServiceImpl implements CartPurchaseService{
             item.setDimensions(dimensions);
         }
         else {
-            throw new Exception(String.format("Id: %d não encontrado.", id));
+            throw new Exception(String.format("Id: %d not found.", id));
         }
         return item;
     }

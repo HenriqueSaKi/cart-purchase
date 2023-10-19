@@ -1,7 +1,6 @@
 package br.com.cartpurchase.controller;
 
 import br.com.cartpurchase.model.AddItem;
-import br.com.cartpurchase.model.Dimensions;
 import br.com.cartpurchase.model.Item;
 import br.com.cartpurchase.model.dto.ItemDTO;
 import br.com.cartpurchase.service.CartPurchaseServiceImpl;
@@ -11,7 +10,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -34,34 +32,57 @@ public class CartPurchaseController {
     }
 
     @GetMapping("/cart/list_cart_items")
-    public ResponseEntity<List<Item>> listCartItems () {
+    public ResponseEntity<Object> listCartItems () {
         List<Item> itemList = service.getCartItems();
-        return ResponseEntity.status(HttpStatus.OK).body(itemList);
+        if(!itemList.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK).body(itemList);
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Your cart is empty!");
+        }
     }
 
     @DeleteMapping("/cart/remove_item/{cartItemId}")
     public ResponseEntity<String> removeItem (@PathVariable String cartItemId) {
-        try {
-            String productTitle = service.findItemById(
-                            Integer.parseInt(cartItemId))
-                    .getProductTitle();
+        List<Item> items = service.getCartItems();
 
-            service.deleteById(cartItemId);
+        if(!items.isEmpty()) {
+            try {
+                String productTitle = service.findItemById(
+                                Integer.parseInt(cartItemId))
+                        .getProductTitle();
 
-            return ResponseEntity.status(HttpStatus.OK)
-                    .body("Item " + cartItemId + " - " + productTitle +
-                            " was removed successfully!");
+                service.deleteById(cartItemId);
+
+                return ResponseEntity.status(HttpStatus.OK)
+                        .body("Item " + cartItemId + " - " + productTitle +
+                                " was removed successfully!");
+            }
+            catch (Exception e) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+            }
         }
-        catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(e.getMessage());
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Your cart is empty!");
         }
 
     }
 
-    @PostMapping("/cart/place_order")
-    public ResponseEntity<String> placeOrder (@RequestBody List<Item> itemList) {
-        return ResponseEntity.status(HttpStatus.OK)
-                .body("Thank you for your order! We will send you an order confirmation to example@email.com shortly.");
+    @GetMapping("/cart/place_order")
+    public ResponseEntity<String> placeOrder () {
+        List<Item> items = service.getCartItems();
+
+        if(!items.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.OK)
+                    .body("Thank you for your order! We will send you an order confirmation to example@email.com shortly.");
+        }
+        else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body("Your cart is empty!");
+        }
+
     }
 
 }
