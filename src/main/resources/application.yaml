@@ -1,5 +1,7 @@
 server:
   port: 8080
+  servlet:
+    context-path: /api/v1
 
 spring:
   datasource:
@@ -12,3 +14,6 @@ spring:
     database-platform: org.hibernate.dialect.SQLServer2012Dialect
     hibernate:
       ddl-auto: update
+
+springdoc:
+  path: /api/v1

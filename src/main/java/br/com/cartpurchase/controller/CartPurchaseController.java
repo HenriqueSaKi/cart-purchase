@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("api/v1")
 public class CartPurchaseController implements CartPurchaseApi{
 
     @Autowired
@@ -41,7 +40,7 @@ public class CartPurchaseController implements CartPurchaseApi{
         }
     }
 
-    public ResponseEntity<String> removeItem (@PathVariable String cartItemId) {
+    public ResponseEntity<String> removeItem (@PathVariable("cart_item_id") String cartItemId) {
         List<Item> items = service.getCartItems();
 
         if(!items.isEmpty()) {
