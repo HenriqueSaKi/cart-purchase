@@ -14,12 +14,11 @@ import java.util.List;
 
 @RestController
 @RequestMapping("api/v1")
-public class CartPurchaseController {
+public class CartPurchaseController implements CartPurchaseApi{
 
     @Autowired
     CartPurchaseServiceImpl service;
 
-    @PostMapping("/cart/add_to_cart")
     public ResponseEntity<Item> addItemsToCart (@RequestBody AddItem addItem) {
         ItemDTO itemDTO = new ItemDTO();
         BeanUtils.copyProperties(addItem, itemDTO);
@@ -31,7 +30,6 @@ public class CartPurchaseController {
 
     }
 
-    @GetMapping("/cart/list_cart_items")
     public ResponseEntity<Object> listCartItems () {
         List<Item> itemList = service.getCartItems();
         if(!itemList.isEmpty()) {
@@ -43,7 +41,6 @@ public class CartPurchaseController {
         }
     }
 
-    @DeleteMapping("/cart/remove_item/{cartItemId}")
     public ResponseEntity<String> removeItem (@PathVariable String cartItemId) {
         List<Item> items = service.getCartItems();
 
@@ -70,7 +67,6 @@ public class CartPurchaseController {
 
     }
 
-    @GetMapping("/cart/place_order")
     public ResponseEntity<String> placeOrder () {
         List<Item> items = service.getCartItems();
 
