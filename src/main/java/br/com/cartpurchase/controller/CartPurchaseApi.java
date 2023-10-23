@@ -2,6 +2,7 @@ package br.com.cartpurchase.controller;
 
 import br.com.cartpurchase.model.AddItem;
 import br.com.cartpurchase.model.Item;
+import br.com.cartpurchase.model.dto.EmailDTO;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.enums.ParameterIn;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @javax.annotation.Generated(value = "io.swagger.codegen.v3.generators.java.SpringCodegen", date = "2023-10-20T00:38:13.818188357Z[GMT]")
 @Validated
@@ -55,8 +57,8 @@ public interface CartPurchaseApi {
                 @Schema(implementation = String.class), examples = @ExampleObject(value = "Your cart is empty!"))) })
     @RequestMapping(value = "/cart/place_order",
             produces = { "application/json" },
-            method = RequestMethod.GET)
-    ResponseEntity<String> placeOrder();
+            method = RequestMethod.POST)
+    ResponseEntity<String> placeOrder(@Parameter(in = ParameterIn.DEFAULT, description = "", schema=@Schema()) @Valid @RequestBody EmailDTO body) throws IOException;
 
 
     @Operation(summary = "Remove item", description = "Remove item", tags={ "cart" })

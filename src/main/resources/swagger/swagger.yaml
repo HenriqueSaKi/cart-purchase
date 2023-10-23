@@ -24,7 +24,7 @@ paths:
           description: successful operation
           content:
             application/json:
-              schema:
+              schema: 
                 type: array
                 items:
                   $ref: '#/components/schemas/Item'
@@ -41,7 +41,7 @@ paths:
             application/json:
               schema:
                 type: array
-                items:
+                items: 
                   $ref: '#/components/schemas/Item'
         '404':
           description: empty cart
@@ -88,11 +88,16 @@ paths:
                 type: string
                 example: "Your cart is empty!"
   /cart/place_order:
-    get:
+    post:
       tags:
         - cart
       summary: Place order
       description: Place order
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmailDTO'
       responses:
         '200':
           description: successful operation
@@ -180,3 +185,21 @@ components:
         unitOfMeasurement:
           type: string
           example: "inches"
+    EmailDTO:
+      type: object
+      properties:
+        ownerRef:
+          type: string
+          example: "Owner Ref"
+        emailFrom:
+          type: string
+          example: "examplefrom@example.com"
+        emailTo:
+          type: string
+          example: "exampleto@example.com"
+        subject:
+          type: string
+          example: "Example"
+        text:
+          type: string
+          example: "This is a example text."

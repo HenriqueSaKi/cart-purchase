@@ -2,6 +2,7 @@ package br.com.cartpurchase.controller;
 
 import br.com.cartpurchase.model.AddItem;
 import br.com.cartpurchase.model.Item;
+import br.com.cartpurchase.model.dto.EmailDTO;
 import br.com.cartpurchase.model.dto.ItemDTO;
 import br.com.cartpurchase.service.CartPurchaseServiceImpl;
 import org.springframework.beans.BeanUtils;
@@ -10,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -66,10 +68,11 @@ public class CartPurchaseController implements CartPurchaseApi{
 
     }
 
-    public ResponseEntity<String> placeOrder () {
+    public ResponseEntity<String> placeOrder (@RequestBody EmailDTO emailDTO) throws IOException {
         List<Item> items = service.getCartItems();
 
         if(!items.isEmpty()) {
+            service.sendMessage2Queue(emailDTO, items);
             return ResponseEntity.status(HttpStatus.OK)
                     .body("Thank you for your order! We will send you an order confirmation to example@email.com shortly.");
         }

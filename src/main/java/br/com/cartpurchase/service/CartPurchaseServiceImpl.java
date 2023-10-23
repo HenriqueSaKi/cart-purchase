@@ -2,10 +2,16 @@ package br.com.cartpurchase.service;
 
 import br.com.cartpurchase.model.Dimensions;
 import br.com.cartpurchase.model.Item;
+import br.com.cartpurchase.model.dto.EmailDTO;
 import br.com.cartpurchase.model.dto.ItemDTO;
 import br.com.cartpurchase.repository.CartPurchaseRepository;
+import com.google.gson.Gson;
+import org.springframework.amqp.core.MessageBuilder;
+import org.springframework.amqp.core.MessageProperties;
+import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,8 +21,14 @@ import java.util.Optional;
 @Service
 public class CartPurchaseServiceImpl implements CartPurchaseService{
 
+    @Value("${spring.rabbitmq.queue}")
+    private String queue;
+
     @Autowired
     CartPurchaseRepository repository;
+
+    @Autowired
+    RabbitTemplate rabbitTemplate;
 
     @Override
     public Item saveInCart(ItemDTO itemDTO) {
@@ -68,6 +80,35 @@ public class CartPurchaseServiceImpl implements CartPurchaseService{
     @Override
     public void deleteById(String id) {
         repository.deleteById(Integer.parseInt(id));
+    }
+
+    @Override
+    public void sendMessage2Queue(EmailDTO emailDTO, List<Item> items) {
+        StringBuffer text = new StringBuffer();
+        text.append("Resumo da compra:\n");
+        items.forEach(item -> {
+            text.append("\tItem ")
+                    .append(item.getId())
+                    .append(" - ")
+                    .append(item.getProductTitle())
+                    .append("\n")
+                    .append("\tQuantidade: ")
+                    .append(item.getQuantity())
+                    .append("\n");
+        });
+        emailDTO.setSubject("Chegou o resumo da sua compra!");
+        emailDTO.setText(text.toString());
+
+        MessageProperties messageProperties = new MessageProperties();
+        messageProperties.setContentType("application/json");
+
+        String json = new Gson().toJson(emailDTO);
+
+        rabbitTemplate.send(
+                queue,
+                MessageBuilder.withBody(json.getBytes()).andProperties(messageProperties).build()
+        );
+
     }
 
 }
