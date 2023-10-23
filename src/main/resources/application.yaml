@@ -1,22 +1,19 @@
 server:
-  port: 7800
+  port: 8080
   servlet:
     context-path: /api/v1
 
 spring:
   datasource:
     url: jdbc:sqlserver://localhost:1433;databaseName=MS_CART_PURCHASE;encrypt=false;trustServerCertificate=true
-    username: sa
-    password: ******
+    username: ${datasource_username}
+    password: ${datasource_password}
     driverClassName: com.microsoft.sqlserver.jdbc.SQLServerDriver
   jpa:
     show-sql: false
     database-platform: org.hibernate.dialect.SQLServer2012Dialect
     hibernate:
       ddl-auto: update
-  rabbitmq:
-    addresses: amqps://***:*****@chimpanzee.rmq.cloudamqp.com/***
-    queue: mqlocal.ms.email.project
 
 springdoc:
   path: /api/v1
