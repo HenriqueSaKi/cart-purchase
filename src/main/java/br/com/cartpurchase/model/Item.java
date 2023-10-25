@@ -189,6 +189,9 @@ public class Item {
   **/
   @Schema(description = "")
   public Dimensions getDimensions() {
+    if(dimensions == null) {
+      dimensions = new Dimensions();
+    }
     return dimensions;
   }
 

@@ -175,6 +175,9 @@ public class AddItem {
      **/
     @Schema(description = "")
     public Dimensions getDimensions() {
+        if(dimensions == null) {
+            dimensions = new Dimensions();
+        }
         return dimensions;
     }
 
