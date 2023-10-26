@@ -38,10 +38,6 @@ public class Dimensions {
 
   @JsonProperty("unitOfMeasurement")
   private String unitOfMeasurement = null;
-  public Dimensions length(BigDecimal length) {
-    this.length = length;
-    return this;
-  }
 
   /**
   * Get length
@@ -54,11 +50,6 @@ public class Dimensions {
 
   public void setLength(BigDecimal length) {
     this.length = length;
-  }
-
-  public Dimensions width(BigDecimal width) {
-    this.width = width;
-    return this;
   }
 
   /**
@@ -74,11 +65,6 @@ public class Dimensions {
     this.width = width;
   }
 
-  public Dimensions height(BigDecimal height) {
-    this.height = height;
-    return this;
-  }
-
   /**
   * Get height
   * @return height
@@ -90,11 +76,6 @@ public class Dimensions {
 
   public void setHeight(BigDecimal height) {
     this.height = height;
-  }
-
-  public Dimensions unitOfMeasurement(String unitOfMeasurement) {
-    this.unitOfMeasurement = unitOfMeasurement;
-    return this;
   }
 
   /**

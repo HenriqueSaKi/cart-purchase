@@ -52,11 +52,6 @@ public class Item {
   @JsonProperty("price")
   private BigDecimal price = null;
 
-  public Item id(Integer id) {
-    this.id = id;
-    return this;
-  }
-
   /**
   * Get id
   * @return id
@@ -68,11 +63,6 @@ public class Item {
 
   public void setId(Integer id) {
     this.id = id;
-  }
-
-  public Item productTitle(String productTitle) {
-    this.productTitle = productTitle;
-    return this;
   }
 
   /**
@@ -88,11 +78,6 @@ public class Item {
     this.productTitle = productTitle;
   }
 
-  public Item description(String description) {
-    this.description = description;
-    return this;
-  }
-
   /**
   * Get description
   * @return description
@@ -104,11 +89,6 @@ public class Item {
 
   public void setDescription(String description) {
     this.description = description;
-  }
-
-  public Item brandName(String brandName) {
-    this.brandName = brandName;
-    return this;
   }
 
   /**
@@ -124,11 +104,6 @@ public class Item {
     this.brandName = brandName;
   }
 
-  public Item material(String material) {
-    this.material = material;
-    return this;
-  }
-
   /**
   * Get material
   * @return material
@@ -140,11 +115,6 @@ public class Item {
 
   public void setMaterial(String material) {
     this.material = material;
-  }
-
-  public Item color(String color) {
-    this.color = color;
-    return this;
   }
 
   /**
@@ -160,11 +130,6 @@ public class Item {
     this.color = color;
   }
 
-  public Item quantity(Integer quantity) {
-    this.quantity = quantity;
-    return this;
-  }
-
   /**
   * Get quantity
   * @return quantity
@@ -176,11 +141,6 @@ public class Item {
 
   public void setQuantity(Integer quantity) {
     this.quantity = quantity;
-  }
-
-  public Item dimensions(Dimensions dimensions) {
-    this.dimensions = dimensions;
-    return this;
   }
 
   /**
@@ -197,11 +157,6 @@ public class Item {
 
   public void setDimensions(Dimensions dimensions) {
     this.dimensions = dimensions;
-  }
-
-  public Item price(BigDecimal price) {
-    this.price = price;
-    return this;
   }
 
   /**

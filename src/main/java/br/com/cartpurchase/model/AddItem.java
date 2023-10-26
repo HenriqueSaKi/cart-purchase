@@ -49,11 +49,6 @@ public class AddItem {
     @JsonProperty("price")
     private BigDecimal price = null;
 
-    public AddItem productTitle(String productTitle) {
-        this.productTitle = productTitle;
-        return this;
-    }
-
     /**
      * Get productTitle
      *
@@ -66,11 +61,6 @@ public class AddItem {
 
     public void setProductTitle(String productTitle) {
         this.productTitle = productTitle;
-    }
-
-    public AddItem description(String description) {
-        this.description = description;
-        return this;
     }
 
     /**
@@ -87,11 +77,6 @@ public class AddItem {
         this.description = description;
     }
 
-    public AddItem brandName(String brandName) {
-        this.brandName = brandName;
-        return this;
-    }
-
     /**
      * Get brandName
      *
@@ -104,11 +89,6 @@ public class AddItem {
 
     public void setBrandName(String brandName) {
         this.brandName = brandName;
-    }
-
-    public AddItem material(String material) {
-        this.material = material;
-        return this;
     }
 
     /**
@@ -125,11 +105,6 @@ public class AddItem {
         this.material = material;
     }
 
-    public AddItem color(String color) {
-        this.color = color;
-        return this;
-    }
-
     /**
      * Get color
      *
@@ -144,11 +119,6 @@ public class AddItem {
         this.color = color;
     }
 
-    public AddItem quantity(Integer quantity) {
-        this.quantity = quantity;
-        return this;
-    }
-
     /**
      * Get quantity
      *
@@ -161,11 +131,6 @@ public class AddItem {
 
     public void setQuantity(Integer quantity) {
         this.quantity = quantity;
-    }
-
-    public AddItem dimensions(Dimensions dimensions) {
-        this.dimensions = dimensions;
-        return this;
     }
 
     /**
@@ -183,11 +148,6 @@ public class AddItem {
 
     public void setDimensions(Dimensions dimensions) {
         this.dimensions = dimensions;
-    }
-
-    public AddItem price(BigDecimal price) {
-        this.price = price;
-        return this;
     }
 
     /**
