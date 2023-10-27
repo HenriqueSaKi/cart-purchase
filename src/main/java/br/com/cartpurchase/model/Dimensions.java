@@ -107,32 +107,13 @@ public class Dimensions {
   }
 
   @Override
-  public int hashCode() {
-    return Objects.hash(length, width, height, unitOfMeasurement);
-  }
-
-  @Override
   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("class Dimensions {\n");
-    
-    sb.append("    length: ").append(toIndentedString(length)).append("\n");
-    sb.append("    width: ").append(toIndentedString(width)).append("\n");
-    sb.append("    height: ").append(toIndentedString(height)).append("\n");
-    sb.append("    unitOfMeasurement: ").append(toIndentedString(unitOfMeasurement)).append("\n");
-    sb.append("}");
-    return sb.toString();
-  }
-
-  /**
-   * Convert the given object to string with each line indented by 4 spaces
-   * (except the first line).
-   */
-  private String toIndentedString(Object o) {
-    if (o == null) {
-      return "null";
-    }
-    return o.toString().replace("\n", "\n    ");
+    return "Dimensions{" +
+            "length=" + length +
+            ", width=" + width +
+            ", height=" + height +
+            ", unitOfMeasurement='" + unitOfMeasurement + '\'' +
+            '}';
   }
 
 }
