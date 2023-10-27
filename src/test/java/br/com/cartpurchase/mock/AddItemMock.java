@@ -1,6 +1,7 @@
 package br.com.cartpurchase.mock;
 
 import br.com.cartpurchase.model.AddItem;
+import br.com.cartpurchase.model.Dimensions;
 
 import java.math.BigDecimal;
 
@@ -14,6 +15,7 @@ public class AddItemMock {
         item.setMaterial("Plastic");
         item.setColor("Red");
         item.setQuantity(1);
+        item.setDimensions(new Dimensions());
         item.getDimensions().setLength(new BigDecimal("10.91"));
         item.getDimensions().setWidth(new BigDecimal("3.11"));
         item.getDimensions().setHeight(new BigDecimal("3.03"));
