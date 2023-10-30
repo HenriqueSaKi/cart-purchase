@@ -17,7 +17,6 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * Dimensions
@@ -89,31 +88,6 @@ public class Dimensions {
 
   public void setUnitOfMeasurement(String unitOfMeasurement) {
     this.unitOfMeasurement = unitOfMeasurement;
-  }
-
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Dimensions dimensions = (Dimensions) o;
-    return Objects.equals(this.length, dimensions.length) &&
-        Objects.equals(this.width, dimensions.width) &&
-        Objects.equals(this.height, dimensions.height) &&
-        Objects.equals(this.unitOfMeasurement, dimensions.unitOfMeasurement);
-  }
-
-  @Override
-  public String toString() {
-    return "Dimensions{" +
-            "length=" + length +
-            ", width=" + width +
-            ", height=" + height +
-            ", unitOfMeasurement='" + unitOfMeasurement + '\'' +
-            '}';
   }
 
 }

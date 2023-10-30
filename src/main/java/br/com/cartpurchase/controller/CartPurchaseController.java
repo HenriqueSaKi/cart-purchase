@@ -68,7 +68,7 @@ public class CartPurchaseController implements CartPurchaseApi{
 
     }
 
-    public ResponseEntity<String> placeOrder (@RequestBody EmailDTO emailDTO) throws IOException {
+    public ResponseEntity<String> placeOrder (@RequestBody EmailDTO emailDTO) {
         List<Item> items = service.getCartItems();
 
         if(!items.isEmpty()) {

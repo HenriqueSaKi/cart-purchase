@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * Item
@@ -29,28 +28,28 @@ public class Item {
   private Integer id = null;
 
   @JsonProperty("productTitle")
-  private String productTitle = null;
+  private String productTitleItem = null;
 
   @JsonProperty("description")
-  private String description = null;
+  private String descriptionItem = null;
 
   @JsonProperty("brandName")
-  private String brandName = null;
+  private String brandNameItem = null;
 
   @JsonProperty("material")
-  private String material = null;
+  private String materialItem = null;
 
   @JsonProperty("color")
-  private String color = null;
+  private String colorItem = null;
 
   @JsonProperty("quantity")
-  private Integer quantity = null;
+  private Integer quantityItem = null;
 
   @JsonProperty("dimensions")
-  private Dimensions dimensions = null;
+  private Dimensions dimensionsItem = null;
 
   @JsonProperty("price")
-  private BigDecimal price = null;
+  private BigDecimal priceItem = null;
 
   /**
   * Get id
@@ -71,11 +70,11 @@ public class Item {
   **/
   @Schema(example = "Water Bottle 1L", description = "")
   public String getProductTitle() {
-    return productTitle;
+    return productTitleItem;
   }
 
   public void setProductTitle(String productTitle) {
-    this.productTitle = productTitle;
+    this.productTitleItem = productTitle;
   }
 
   /**
@@ -84,11 +83,11 @@ public class Item {
   **/
   @Schema(example = "The portable water can be used in various occasions. The gym, camping, traveling, as well as in the office and at home.", description = "")
   public String getDescription() {
-    return description;
+    return descriptionItem;
   }
 
   public void setDescription(String description) {
-    this.description = description;
+    this.descriptionItem = description;
   }
 
   /**
@@ -97,11 +96,11 @@ public class Item {
   **/
   @Schema(example = "Xiaomi", description = "")
   public String getBrandName() {
-    return brandName;
+    return brandNameItem;
   }
 
   public void setBrandName(String brandName) {
-    this.brandName = brandName;
+    this.brandNameItem = brandName;
   }
 
   /**
@@ -110,11 +109,11 @@ public class Item {
   **/
   @Schema(example = "Plastic", description = "")
   public String getMaterial() {
-    return material;
+    return materialItem;
   }
 
   public void setMaterial(String material) {
-    this.material = material;
+    this.materialItem = material;
   }
 
   /**
@@ -123,11 +122,11 @@ public class Item {
   **/
   @Schema(example = "Red", description = "")
   public String getColor() {
-    return color;
+    return colorItem;
   }
 
   public void setColor(String color) {
-    this.color = color;
+    this.colorItem = color;
   }
 
   /**
@@ -136,11 +135,11 @@ public class Item {
   **/
   @Schema(example = "1", description = "")
   public Integer getQuantity() {
-    return quantity;
+    return quantityItem;
   }
 
   public void setQuantity(Integer quantity) {
-    this.quantity = quantity;
+    this.quantityItem = quantity;
   }
 
   /**
@@ -149,14 +148,14 @@ public class Item {
   **/
   @Schema(description = "")
   public Dimensions getDimensions() {
-    if(dimensions == null) {
-      dimensions = new Dimensions();
+    if(dimensionsItem == null) {
+      dimensionsItem = new Dimensions();
     }
-    return dimensions;
+    return dimensionsItem;
   }
 
   public void setDimensions(Dimensions dimensions) {
-    this.dimensions = dimensions;
+    this.dimensionsItem = dimensions;
   }
 
   /**
@@ -165,46 +164,12 @@ public class Item {
   **/
   @Schema(example = "9.99", description = "")
   public BigDecimal getPrice() {
-    return price;
+    return priceItem;
   }
 
   public void setPrice(BigDecimal price) {
-    this.price = price;
+    this.priceItem = price;
   }
 
-  @Override
-  public boolean equals(Object o) {
-    if (this == o) {
-      return true;
-    }
-    if (o == null || getClass() != o.getClass()) {
-      return false;
-    }
-    Item item = (Item) o;
-    return Objects.equals(this.id, item.id) &&
-        Objects.equals(this.productTitle, item.productTitle) &&
-        Objects.equals(this.description, item.description) &&
-        Objects.equals(this.brandName, item.brandName) &&
-        Objects.equals(this.material, item.material) &&
-        Objects.equals(this.color, item.color) &&
-        Objects.equals(this.quantity, item.quantity) &&
-        Objects.equals(this.dimensions, item.dimensions) &&
-        Objects.equals(this.price, item.price);
-  }
-
-  @Override
-  public String toString() {
-    return "Item{" +
-            "id=" + id +
-            ", productTitle='" + productTitle + '\'' +
-            ", description='" + description + '\'' +
-            ", brandName='" + brandName + '\'' +
-            ", material='" + material + '\'' +
-            ", color='" + color + '\'' +
-            ", quantity=" + quantity +
-            ", dimensions=" + dimensions +
-            ", price=" + price +
-            '}';
-  }
 
 }

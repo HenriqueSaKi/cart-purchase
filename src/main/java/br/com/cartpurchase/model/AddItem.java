@@ -16,7 +16,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import java.math.BigDecimal;
-import java.util.Objects;
 
 /**
  * AddItem
@@ -159,39 +158,6 @@ public class AddItem {
 
     public void setPrice(BigDecimal price) {
         this.price = price;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        AddItem addItem = (AddItem) o;
-        return Objects.equals(this.productTitle, addItem.productTitle) &&
-                Objects.equals(this.description, addItem.description) &&
-                Objects.equals(this.brandName, addItem.brandName) &&
-                Objects.equals(this.material, addItem.material) &&
-                Objects.equals(this.color, addItem.color) &&
-                Objects.equals(this.quantity, addItem.quantity) &&
-                Objects.equals(this.dimensions, addItem.dimensions) &&
-                Objects.equals(this.price, addItem.price);
-    }
-
-    @Override
-    public String toString() {
-        return "AddItem{" +
-                "productTitle='" + productTitle + '\'' +
-                ", description='" + description + '\'' +
-                ", brandName='" + brandName + '\'' +
-                ", material='" + material + '\'' +
-                ", color='" + color + '\'' +
-                ", quantity=" + quantity +
-                ", dimensions=" + dimensions +
-                ", price=" + price +
-                '}';
     }
 
 }
