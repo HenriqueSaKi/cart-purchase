@@ -84,7 +84,7 @@ public class CartPurchaseServiceImpl implements CartPurchaseService{
 
     @Override
     public void sendMessage2Queue(EmailDTO emailDTO, List<Item> items) {
-        StringBuffer text = new StringBuffer();
+        StringBuilder text = new StringBuilder();
         text.append("Resumo da compra:\n");
         items.forEach(item -> {
             text.append("\tItem ")
