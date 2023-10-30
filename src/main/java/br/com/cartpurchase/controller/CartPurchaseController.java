@@ -9,9 +9,10 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,6 +20,8 @@ public class CartPurchaseController implements CartPurchaseApi{
 
     @Autowired
     CartPurchaseServiceImpl service;
+
+    private static final String EMPTY_CART_MESSAGE = "Your cart is empty!";
 
     public ResponseEntity<Item> addItemsToCart (@RequestBody AddItem addItem) {
         ItemDTO itemDTO = new ItemDTO();
@@ -38,7 +41,7 @@ public class CartPurchaseController implements CartPurchaseApi{
         }
         else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Your cart is empty!");
+                    .body(EMPTY_CART_MESSAGE);
         }
     }
 
@@ -63,7 +66,7 @@ public class CartPurchaseController implements CartPurchaseApi{
         }
         else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Your cart is empty!");
+                    .body(EMPTY_CART_MESSAGE);
         }
 
     }
@@ -78,7 +81,7 @@ public class CartPurchaseController implements CartPurchaseApi{
         }
         else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND)
-                    .body("Your cart is empty!");
+                    .body(EMPTY_CART_MESSAGE);
         }
 
     }

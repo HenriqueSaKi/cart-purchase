@@ -86,16 +86,14 @@ public class CartPurchaseServiceImpl implements CartPurchaseService{
     public void sendMessage2Queue(EmailDTO emailDTO, List<Item> items) {
         StringBuilder text = new StringBuilder();
         text.append("Resumo da compra:\n");
-        items.forEach(item -> {
-            text.append("\tItem ")
-                    .append(item.getId())
-                    .append(" - ")
-                    .append(item.getProductTitle())
-                    .append("\n")
-                    .append("\tQuantidade: ")
-                    .append(item.getQuantity())
-                    .append("\n");
-        });
+        items.forEach(item -> text.append("\tItem ")
+                .append(item.getId())
+                .append(" - ")
+                .append(item.getProductTitle())
+                .append("\n")
+                .append("\tQuantidade: ")
+                .append(item.getQuantity())
+                .append("\n"));
         emailDTO.setSubject("Chegou o resumo da sua compra!");
         emailDTO.setText(text.toString());
 
